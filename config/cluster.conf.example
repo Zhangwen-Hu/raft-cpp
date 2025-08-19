@@ -1,0 +1,55 @@
+# Raft Cluster Configuration Example
+# This is a template configuration file for setting up a Raft cluster
+
+# Cluster name
+cluster_name = "raft-example"
+
+# Node configuration for a 3-node cluster
+# Each node needs a unique ID and address
+
+[node1]
+id = "node1"
+address = "localhost:50051"
+peers = ["localhost:50052", "localhost:50053"]
+
+[node2]
+id = "node2" 
+address = "localhost:50052"
+peers = ["localhost:50051", "localhost:50053"]
+
+[node3]
+id = "node3"
+address = "localhost:50053"
+peers = ["localhost:50051", "localhost:50052"]
+
+# Timing configuration (in milliseconds)
+[timing]
+heartbeat_interval = 50
+election_timeout_min = 150
+election_timeout_max = 300
+rpc_timeout = 5000
+
+# Storage configuration
+[storage]
+data_dir = "./data"
+log_file = "raft.log"
+state_file_suffix = "_state.dat"
+
+# Logging configuration
+[logging]
+level = "INFO"  # DEBUG, INFO, WARN, ERROR
+console_output = true
+file_output = true
+
+# Performance tuning
+[performance]
+max_log_entries_per_request = 100
+max_concurrent_requests = 1000
+enable_log_compaction = false  # Not implemented yet
+
+# Security (for future implementation)
+[security]
+enable_tls = false
+cert_file = ""
+key_file = ""
+ca_file = "" 
